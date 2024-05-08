@@ -86,12 +86,12 @@ class CustomCartPoleEnv(gym.Env[np.ndarray, Union[int, np.ndarray]]):
         "render_fps": 50,
     }
 
-    def __init__(self, render_mode: Optional[str] = None, selected_colors= None):
+    def __init__(self, render_mode: Optional[str] = None, selected_colors= None, mass_cart= 1.0, mass_pole= 0.1, pole_lenght= 0.5):
         self.gravity = 9.8
-        self.masscart = 1.0
-        self.masspole = 0.1
+        self.masscart = mass_cart
+        self.masspole = mass_pole #ogVal=0.1
         self.total_mass = self.masspole + self.masscart
-        self.length = 0.5  # actually half the pole's length
+        self.length = pole_lenght  # actually half the pole's length ogVal=0.5
         self.polemass_length = self.masspole * self.length
         self.force_mag = 10.0
         self.tau = 0.02  # seconds between state updates
